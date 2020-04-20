@@ -2,17 +2,16 @@ package com.movierank.domain;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@Document(collection ="movie")
 public class MovieDTO {
 	private int rank; 				// 순위
 	private String movie;			// 영화 제목
@@ -31,7 +30,7 @@ public class MovieDTO {
 	
 	public MovieDTO(int rank, String movie, String imgsrc, String type, String opendate, String bookingrate,
 			String runtime, String director, String actor, String navercode, double naverscore, String daumcode,
-			double daumscore) {
+			double daumscore, double score) {
 		super();
 		this.rank = rank;
 		this.movie = movie;
@@ -46,8 +45,8 @@ public class MovieDTO {
 		this.naverscore = naverscore;
 		this.daumcode = daumcode;
 		this.daumscore = daumscore;
+		this.score = score;
 	}
-	
 	
 
 }

@@ -1,6 +1,7 @@
 package com.movierank.service;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,8 +80,10 @@ public class MovieService {
 				daumscore = Double.parseDouble(daumPoint); // 다음 평점
 			}
 			
-			
-			MovieDTO mDto = new MovieDTO(rank, movie, imgsrc, type, opendate, bookingrate, runtime, director, actor, navercode, naverscore, daumcode, daumscore);
+			DecimalFormat fmt = new DecimalFormat("#.#");
+			String fmtVal = fmt.format((daumscore + naverscore)/2);
+			Double score = Double.parseDouble(fmtVal);	
+			MovieDTO mDto = new MovieDTO(rank, movie, imgsrc, type, opendate, bookingrate, runtime, director, actor, navercode, naverscore, daumcode, daumscore, score);
 			
 			log.info("<><><><><><>MOVIE: "+ mDto.toString());
 			rankList.add(mDto);
